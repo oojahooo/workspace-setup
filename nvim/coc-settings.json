@@ -1,5 +1,12 @@
 {
-    "python.pythonPath": "/usr/local/opt/python@3.8/libexec/bin/python",
+    "python.pythonPath": "/Users/oojahooo/.pyenv/shims/python",
     "python.jediEnabled": false,
-    "python.linting.pylintEnabled": true
+    "python.linting.pylintEnabled": true,
+    "languageserver": {
+      "ocaml-lsp": {
+        "command": "opam",
+        "args": ["config", "exec", "--", "ocamllsp"],
+        "filetypes": ["ocaml", "reason"]
+      }
+    }
 }
