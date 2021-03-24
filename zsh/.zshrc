@@ -77,6 +77,7 @@ plugins=(
     zsh-syntax-highlighting
     pyenv
     osx
+    fzf
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -122,4 +123,11 @@ fi
 
 autoload -U compinit && compinit -u
 
-bindkey -v
+# fd configuration
+export FZF_DEFAULT_COMMAND='fd --type f'
+export PATH="/usr/local/opt/openjdk@11/bin:$PATH"
+
+JAVA_HOME=/usr/local/Cellar/openjdk@11/11.0.10/libexec/openjdk.jdk/Contents/Home
+PATH=$PATH:$JAVA_HOME/bin
+export JAVA_HOME
+export PATH
