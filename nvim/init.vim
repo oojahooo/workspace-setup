@@ -36,6 +36,7 @@ nnoremap <C-j> G
 nnoremap <C-k> gg
 inoremap <C-d> <Del>
 autocmd FileType python map <buffer> <leader>r :w<CR>:exec '!python' shellescape(@%, 1)<CR>
+autocmd FileType c map <buffer> <leader>r :w<CR>:!gcc % -o %<<CR>:!./%<<CR>
 
 " Key Setting - resize windows
 nnoremap <silent> <Leader>= :exe "resize +3"<CR>
@@ -67,10 +68,15 @@ Plug 'vim-syntastic/syntastic'
 Plug 'preservim/tagbar'
 Plug 'blueyed/vim-diminactive'
 Plug 'bkad/CamelCaseMotion'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
 call plug#end()
 
 " camelcasemotion setting
 let g:camelcasemotion_key = '<leader>'
+
+" markdown-preview setting
+au FileType markdown nnoremap <leader>md :MarkdownPreview<CR>
+au FileType markdown nnoremap <leader>ms :MarkdownPreviewStop<CR>
 
 " tagbar setup
 nmap <leader>tb :TagbarToggle<CR>
@@ -181,24 +187,6 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 " Make sure `"codeLens.enable": true` is set in your coc config
 nnoremap <leader>cl :<C-u>call CocActionAsync('codeLensAction')<CR>
 
-" Mappings for CoCList
-" Show all diagnostics.
-nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
-" Manage extensions.
-nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
-" Show commands.
-nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
-" Find symbol of current document.
-nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
-" Search workspace symbols.
-nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
-" Do default action for next item.
-nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
-" Do default action for previous item.
-nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
-" Resume latest coc list.
-nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
-
 " Notify coc.nvim that <enter> has been pressed.
 " Currently used for the formatOnType feature.
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
@@ -245,6 +233,8 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+
+nnoremap <leader>lc :lclose<CR>
 
 let g:syntastic_ocaml_checkers = ['merlin']
 " ## added by OPAM user-setup for vim / base ## 93ee63e278bdfc07d1139a748ed3fff2 ## you can edit, but keep this line
