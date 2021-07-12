@@ -69,14 +69,21 @@ Plug 'preservim/tagbar'
 Plug 'blueyed/vim-diminactive'
 Plug 'bkad/CamelCaseMotion'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
+Plug 'octol/vim-cpp-enhanced-highlight'
 call plug#end()
 
 " camelcasemotion setting
 let g:camelcasemotion_key = '<leader>'
 
 " markdown-preview setting
-au FileType markdown nnoremap <leader>md :MarkdownPreview<CR>
-au FileType markdown nnoremap <leader>ms :MarkdownPreviewStop<CR>
+au FileType markdown call SetMarkdown()
+function SetMarkdown()
+    nnoremap <leader>md :MarkdownPreview<CR>
+    nnoremap <leader>ms :MarkdownPreviewStop<CR>
+    set tabstop=2
+    set softtabstop=2
+    set shiftwidth=2 
+endfunction
 
 " tagbar setup
 nmap <leader>tb :TagbarToggle<CR>
@@ -192,17 +199,6 @@ nnoremap <leader>cl :<C-u>call CocActionAsync('codeLensAction')<CR>
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
       \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
-" Toggle panel with Tree Views
-nnoremap <silent> <space>t :<C-u>CocCommand metals.tvp<CR>
-" Toggle Tree View 'metalsPackages'
-nnoremap <silent> <space>tp :<C-u>CocCommand metals.tvp metalsPackages<CR>
-" Toggle Tree View 'metalsCompile'
-nnoremap <silent> <space>tc :<C-u>CocCommand metals.tvp metalsCompile<CR>
-" Toggle Tree View 'metalsBuild'
-nnoremap <silent> <space>tb :<C-u>CocCommand metals.tvp metalsBuild<CR>
-" Reveal current current class (trait or object) in Tree View 'metalsPackages'
-nnoremap <silent> <space>tf :<C-u>CocCommand metals.revealInTreeView metalsPackages<CR>
-
 " NERDTree
 au BufEnter * lcd %:p:h
 au VimEnter * if !argc() | NERDTree | endif
@@ -271,7 +267,7 @@ endfor
 " ## end of OPAM user-setup addition for vim / base ## keep this line
 " ## added by OPAM user-setup for vim / ocp-indent ## 27851baf4ae4043ceb0f01e05493f4aa ## you can edit, but keep this line
 if count(s:opam_available_tools,"ocp-indent") == 0
-  source "/Users/oojahooo/.opam/main/share/ocp-indent/vim/indent/ocaml.vim"
+  source "$HOME/.opam/main/share/ocp-indent/vim/indent/ocaml.vim"
 endif
 " ## end of OPAM user-setup addition for vim / ocp-indent ## keep this line
 
@@ -284,3 +280,11 @@ function SetOcamlOptions()
     set softtabstop=2
     set shiftwidth=2 
 endfunction
+
+" cpp highlight settings
+let g:cpp_class_scope_highlight = 1
+let g:cpp_member_variable_highlight = 1
+let g:cpp_class_decl_highlight = 1
+
+" tag file
+set tags=tags

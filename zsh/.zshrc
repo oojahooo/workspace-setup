@@ -3,7 +3,7 @@
 
 ZSH_DISABLE_COMPFIX="true"
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/oojahooo/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -75,9 +75,7 @@ plugins=(
     git
     zsh-autosuggestions
     zsh-syntax-highlighting
-    pyenv
     osx
-    fzf
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -107,27 +105,29 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+export PATH=/opt/homebrew/bin:$PATH
 alias vi="nvim"
 alias ctags="`brew --prefix`/bin/ctags"
 
 # opam configuration
-test -r /Users/oojahooo/.opam/opam-init/init.zsh && . /Users/oojahooo/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
-
-# pyenv configuration
-if command -v pyenv 1>/dev/null 2>&1; then
-	eval "$(pyenv init -)"
-fi
+test -r $HOME/.opam/opam-init/init.zsh && . $HOME/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
 # autojump configuration
-[[ -s /Users/oojahooo/.autojump/etc/profile.d/autojump.sh ]] && source /Users/oojahooo/.autojump/etc/profile.d/autojump.sh
+[[ -s $HOME/.autojump/etc/profile.d/autojump.sh ]] && source $HOME/.autojump/etc/profile.d/autojump.sh
 
 autoload -U compinit && compinit -u
-
-# fd configuration
-export FZF_DEFAULT_COMMAND='fd --type f'
-export PATH="/usr/local/opt/openjdk@11/bin:$PATH"
 
 JAVA_HOME=/usr/local/Cellar/openjdk@11/11.0.10/libexec/openjdk.jdk/Contents/Home
 PATH=$PATH:$JAVA_HOME/bin
 export JAVA_HOME
 export PATH
+
+export PATH=$PATH:/usr/local/texlive/2021/bin/x86_64-darwin
+export PATH=/opt/homebrew/bin:/usr/local/opt/openjdk@11/bin:$HOME/.autojump/bin:$HOME/.opam/main/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/texlive/2021/bin/x86_64-darwin
+
+# pyenv configuration
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+if command -v pyenv 1>/dev/null 2>&1; then
+    eval "$(pyenv init --path)"
+fi
