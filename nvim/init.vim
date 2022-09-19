@@ -16,7 +16,7 @@ set lazyredraw          " Wait to redraw
 let html_no_rendering=1 " Don't render italic, bold, links in HTML
 autocmd FileType make setlocal noexpandtab
 
-colo gruvbox
+colo zenburn
 
 " Key Settings
 nnoremap <F2> :set invpaste paste?<CR>
