@@ -70,6 +70,7 @@ Plug 'blueyed/vim-diminactive'
 Plug 'bkad/CamelCaseMotion'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
 Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'sbdchd/neoformat'
 call plug#end()
 
 " camelcasemotion setting
@@ -232,7 +233,29 @@ let g:syntastic_check_on_wq = 0
 
 nnoremap <leader>lc :lclose<CR>
 
-let g:syntastic_ocaml_checkers = ['merlin']
+" Ocaml setting
+nnoremap <leader>to :MerlinTypeOf<CR>
+au FileType ocaml call SetOcamlOptions()
+function SetOcamlOptions()
+    inoremap <c-n> <c-x><c-o>
+    set tabstop=2
+    set softtabstop=2
+    set shiftwidth=2 
+endfunction
+
+" Neoformat setting
+augroup fmt
+    autocmd!
+    autocmd BufWritePre * undojoin | Neoformat
+augroup END
+
+" cpp highlight settings
+let g:cpp_class_scope_highlight = 1
+let g:cpp_member_variable_highlight = 1
+let g:cpp_class_decl_highlight = 1
+
+" tag file
+set tags=tags
 " ## added by OPAM user-setup for vim / base ## 93ee63e278bdfc07d1139a748ed3fff2 ## you can edit, but keep this line
 let s:opam_share_dir = system("opam config var share")
 let s:opam_share_dir = substitute(s:opam_share_dir, '[\r\n]*$', '', '')
@@ -265,26 +288,3 @@ for tool in s:opam_packages
   endif
 endfor
 " ## end of OPAM user-setup addition for vim / base ## keep this line
-" ## added by OPAM user-setup for vim / ocp-indent ## 27851baf4ae4043ceb0f01e05493f4aa ## you can edit, but keep this line
-if count(s:opam_available_tools,"ocp-indent") == 0
-  source "$HOME/.opam/main/share/ocp-indent/vim/indent/ocaml.vim"
-endif
-" ## end of OPAM user-setup addition for vim / ocp-indent ## keep this line
-
-" Ocaml setting
-nnoremap <leader>to :MerlinTypeOf<CR>
-au FileType ocaml call SetOcamlOptions()
-function SetOcamlOptions()
-    inoremap <c-n> <c-x><c-o>
-    set tabstop=2
-    set softtabstop=2
-    set shiftwidth=2 
-endfunction
-
-" cpp highlight settings
-let g:cpp_class_scope_highlight = 1
-let g:cpp_member_variable_highlight = 1
-let g:cpp_class_decl_highlight = 1
-
-" tag file
-set tags=tags
