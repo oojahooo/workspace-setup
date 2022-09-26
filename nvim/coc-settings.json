@@ -1,12 +1,10 @@
 {
-    "python.pythonPath": "/Users/oojahooo/.pyenv/shims/python",
-    "python.jediEnabled": false,
-    "python.linting.pylintEnabled": true,
     "languageserver": {
-      "ocaml-lsp": {
-        "command": "opam",
-        "args": ["config", "exec", "--", "ocamllsp"],
-        "filetypes": ["ocaml", "reason"]
-      }
-    }
+        "ocaml-lsp": {
+            "command": "opam",
+            "args": ["config", "exec", "--", "ocamllsp"],
+            "filetypes": ["ocaml", "reason"]
+        }
+    },
+    "coc.preferences.currentFunctionSymbolAutoUpdate": true
 }
