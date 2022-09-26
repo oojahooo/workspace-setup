@@ -1,6 +1,9 @@
 " Basic Settings
+set nocompatible
+set runtimepath^=$HOME/.vim/plugged/coc.nvim
+filetype plugin indent on
 syntax on
-set number
+set hidden
 set hlsearch
 set ignorecase
 set number relativenumber
@@ -8,7 +11,6 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set expandtab
-set ttyfast
 set noshowmatch         " Don't match parentheses/brackets
 set nocursorline        " Don't paint cursor line
 set nocursorcolumn      " Don't paint cursor column
@@ -19,8 +21,6 @@ autocmd FileType make setlocal noexpandtab
 colo zenburn
 
 " Key Settings
-nnoremap <F2> :set invpaste paste?<CR>
-set pastetoggle=<F2>
 let mapleader = " "
 nnoremap <leader>q :bp<CR>
 nnoremap <leader>w :bn<CR>
@@ -53,7 +53,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'preservim/nerdtree'
 Plug 'tpope/vim-commentary'
 Plug 'easymotion/vim-easymotion'
 Plug 'jiangmiao/auto-pairs'
@@ -87,13 +86,6 @@ endfunction
 
 " tagbar setup
 nmap <leader>tb :TagbarToggle<CR>
-
-" NERDTree
-au BufEnter * lcd %:p:h
-au VimEnter * if !argc() | NERDTree | endif
-nnoremap <leader>nt :NERDTreeToggle<CR>
-let NERDTreeShowLineNumbers=1
-let g:NERDTreeWinPos = "left"
 
 " vim-multiple-cursor
 let g:multi_cursor_use_default_mapping=0
@@ -130,8 +122,6 @@ let g:cpp_class_scope_highlight = 1
 let g:cpp_member_variable_highlight = 1
 let g:cpp_class_decl_highlight = 1
 
-" tag file
-set tags=tags
 " ## added by OPAM user-setup for vim / base ## 93ee63e278bdfc07d1139a748ed3fff2 ## you can edit, but keep this line
 let s:opam_share_dir = system("opam config var share")
 let s:opam_share_dir = substitute(s:opam_share_dir, '[\r\n]*$', '', '')
@@ -277,3 +267,17 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 " Mappings for CoCList
 " Show all diagnostics.
 nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
+" Manage extensions.
+nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
+" Show commands.
+nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
+" Find symbol of current document.
+nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
+" Search workspace symbols.
+nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
+" Do default action for next item.
+nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
+" Do default action for previous item.
+nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
+" Resume latest coc list.
+nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
