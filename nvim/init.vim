@@ -48,6 +48,11 @@ nnoremap <silent> <Leader>_ :exe "resize " . (winheight(0) * 2/3)<CR>
 nnoremap <silent> <Leader>} :exe "vertical resize " . (winheight(0) * 3/2)<CR>
 nnoremap <silent> <Leader>{ :exe "vertical resize " . (winheight(0) * 2/3)<CR>
 
+" Command Setting - tab
+ca tn tabnew
+ca th tabp
+ca tl tabn
+
 " Plugins
 call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-fugitive'
@@ -281,3 +286,5 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+
+inoremap <silent><expr> <C-r> coc#refresh()
