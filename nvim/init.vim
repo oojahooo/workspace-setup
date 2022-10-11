@@ -48,11 +48,6 @@ nnoremap <silent> <Leader>_ :exe "resize " . (winheight(0) * 2/3)<CR>
 nnoremap <silent> <Leader>} :exe "vertical resize " . (winheight(0) * 3/2)<CR>
 nnoremap <silent> <Leader>{ :exe "vertical resize " . (winheight(0) * 2/3)<CR>
 
-" Command Setting - tab
-ca tn tabnew
-ca th tabp
-ca tl tabn
-
 " Plugins
 call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-fugitive'
@@ -74,6 +69,7 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'sbdchd/neoformat'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'github/copilot.vim'
 call plug#end()
 
 " camelcasemotion setting
@@ -107,7 +103,7 @@ noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 10, 3)<CR>
 noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 10, 3)<CR>
 
 " Ocaml setting
-nnoremap <leader>to :MerlinTypeOf<CR>
+nnoremap <C-t> :MerlinTypeOf<CR>
 au FileType ocaml call SetOcamlOptions()
 function SetOcamlOptions()
     inoremap <c-n> <c-x><c-o>
@@ -210,8 +206,8 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
-" Show docs (e.g. type of var in OCaml) when holding the cursor.
-autocmd CursorHold * silent call CocActionAsync('doHover')
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
@@ -286,5 +282,3 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
-
-inoremap <silent><expr> <C-r> coc#refresh()
