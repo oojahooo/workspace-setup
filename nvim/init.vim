@@ -1,6 +1,5 @@
 " Basic Settings
 set nocompatible
-set runtimepath^=$HOME/.vim/plugged/coc.nvim
 filetype plugin indent on
 syntax on
 set hidden
@@ -282,3 +281,14 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+
+
+" Copilot config
+
+" Use <C-a> to apply completion.
+imap <silent><script><expr> <C-a> copilot#Accept("\<CR>")
+let g:copilot_no_tab_map = v:true
+
+" Use <C-p>, <C-n> to cycle through completion options.
+imap <C-p> <Plug>(copilot-previous)
+imap <C-n> <Plug>(copilot-next)
