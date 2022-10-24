@@ -66,8 +66,8 @@ Plug 'blueyed/vim-diminactive'
 Plug 'bkad/CamelCaseMotion'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
 Plug 'octol/vim-cpp-enhanced-highlight'
-Plug 'sbdchd/neoformat'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'sbdchd/neoformat'
 Plug 'github/copilot.vim'
 call plug#end()
 
@@ -116,6 +116,8 @@ augroup fmt
     autocmd!
     autocmd BufWritePre * undojoin | Neoformat
 augroup END
+let g:neoformat_enabled_python = ['yapf']
+let g:neoformat_enabled_c = ['clang-format']
 
 " cpp highlight settings
 let g:cpp_class_scope_highlight = 1
