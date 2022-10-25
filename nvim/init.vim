@@ -284,9 +284,15 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
+" Mapping for doHover
+nnoremap <silent><nowait> <leader>d :call CocAction('doHover')<CR>
+
+" cabbrev
+ca tn tabnew
+ca th tabp
+ca tl tabn
 
 " Copilot config
-
 " Use <C-a> to apply completion.
 imap <silent><script><expr> <C-a> copilot#Accept("\<CR>")
 let g:copilot_no_tab_map = v:true
