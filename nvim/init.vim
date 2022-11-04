@@ -6,7 +6,7 @@ syntax enable
 set hidden
 set hlsearch
 set ignorecase
-set number relativenumber
+set number
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
@@ -20,6 +20,13 @@ let html_no_rendering=1 " Don't render italic, bold, links in HTML
 autocmd FileType make setlocal noexpandtab
 
 colo zenburn
+
+" toggling line number modes
+:augroup numbertoggle
+:  autocmd!
+:  autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu && mode() != "i" | set rnu   | endif
+:  autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu                  | set nornu | endif
+:augroup END
 
 " Key Settings
 let mapleader = " "
