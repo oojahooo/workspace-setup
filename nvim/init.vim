@@ -1,7 +1,8 @@
 " Basic Settings
+set encoding=utf-8
 set nocompatible
 filetype plugin indent on
-syntax on
+syntax enable
 set hidden
 set hlsearch
 set ignorecase
@@ -10,6 +11,7 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set expandtab
+set colorcolumn=80,120
 set noshowmatch         " Don't match parentheses/brackets
 set nocursorline        " Don't paint cursor line
 set nocursorcolumn      " Don't paint cursor column
@@ -69,6 +71,7 @@ Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'sbdchd/neoformat'
 Plug 'github/copilot.vim'
+Plug 'lervag/vimtex'
 call plug#end()
 
 " camelcasemotion setting
@@ -112,12 +115,18 @@ function SetOcamlOptions()
 endfunction
 
 " Neoformat setting
+let g:neoformat_enabled_python = ['yapf']
+let g:neoformat_enabled_c = ['clang-format']
+let g:neoformat_tex_latexindent = {
+    \ 'exe': 'latexindent',
+    \ 'stdin': 1,
+    \ 'no_append': 1,
+    \ }
+let g:neoformat_enabled_tex = ['latexindent']
 augroup fmt
     autocmd!
     autocmd BufWritePre * undojoin | Neoformat
 augroup END
-let g:neoformat_enabled_python = ['yapf']
-let g:neoformat_enabled_c = ['clang-format']
 
 " cpp highlight settings
 let g:cpp_class_scope_highlight = 1
@@ -300,3 +309,11 @@ let g:copilot_no_tab_map = v:true
 " Use <C-p>, <C-n> to cycle through completion options.
 imap <C-p> <Plug>(copilot-previous)
 imap <C-n> <Plug>(copilot-next)
+
+" Vimtex config
+let g:tex_flavor = 'latex'
+let g:vimtex_view_method = 'skim'
+let g:vimtex_view_skim_sync = 1
+let g:vimtex_view_skim_activate = 1
+let g:vimtex_quickfix_mode = 0
+let maplocalleader = " "
