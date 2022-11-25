@@ -79,6 +79,9 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'sbdchd/neoformat'
 Plug 'github/copilot.vim'
 Plug 'lervag/vimtex'
+Plug 'bohlender/vim-smt2'
+Plug 'powerman/vim-plugin-AnsiEsc'
+Plug 'sillybun/vim-repl'
 call plug#end()
 
 " camelcasemotion setting
@@ -122,6 +125,13 @@ function SetOcamlOptions()
 endfunction
 
 " Neoformat setting
+let g:neoformat_ocaml_ocamlformat = {
+            \ 'exe': 'ocamlformat',
+            \ 'no_append': 1,
+            \ 'stdin': 1,
+            \ 'args': ['--enable-outside-detected-project', '--name', '"%:p"', '-']
+            \ }
+let g:neoformat_enabled_ocaml = ['ocamlformat']
 let g:neoformat_enabled_python = ['yapf']
 let g:neoformat_enabled_c = ['clang-format']
 let g:neoformat_tex_latexindent = {
@@ -131,8 +141,8 @@ let g:neoformat_tex_latexindent = {
     \ }
 let g:neoformat_enabled_tex = ['latexindent']
 augroup fmt
-    autocmd!
-    autocmd BufWritePre * undojoin | Neoformat
+  autocmd!
+  autocmd BufWritePre *.ml,*.mli,*.sh,*.py,*.json,dune,*.c,*.tex try | undojoin | Neoformat | catch /^Vim\%((\a\+)\)\=:E790/ | finally | silent Neoformat | endtry
 augroup END
 
 " cpp highlight settings
@@ -174,7 +184,7 @@ endfor
 " ## end of OPAM user-setup addition for vim / base ## keep this line
 " ## added by OPAM user-setup for vim / ocp-indent ## a25a25c78212f1885bf9e219211aef29 ## you can edit, but keep this line
 if count(s:opam_available_tools,"ocp-indent") == 0
-  source "/home/oojahooo/.opam/sparrow-4.13.1+flambda/share/ocp-indent/vim/indent/ocaml.vim"
+  source s:opam_share_dir . "/ocp-indent/vim/indent/ocaml.vim"
 endif
 " ## end of OPAM user-setup addition for vim / ocp-indent ## keep this line
 
@@ -324,3 +334,14 @@ let g:vimtex_view_skim_sync = 1
 let g:vimtex_view_skim_activate = 1
 let g:vimtex_quickfix_mode = 0
 let maplocalleader = " "
+
+" vim-repl config
+let g:sendtorepl_invoke_key = "<leader>w"
+let g:repl_position = 0
+let g:repl_stayatrepl_when_open = 1
+let g:repl_exit_commands = {
+			\	'python': 'quit()',
+			\	'bash': 'exit',
+			\	'zsh': 'exit',
+			\	'default': 'exit',
+			\	}
