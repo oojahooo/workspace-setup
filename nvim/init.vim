@@ -3,6 +3,7 @@ set encoding=utf-8
 set nocompatible
 filetype plugin indent on
 syntax enable
+set mouse=nvi
 set hidden
 set hlsearch
 set ignorecase
@@ -193,6 +194,9 @@ endif
 set nobackup
 set nowritebackup
 
+autocmd VimLeavePre * :call coc#rpc#kill()
+autocmd VimLeave * if get(g:, 'coc_process_pid', 0) | call system('kill -9 -'.g:coc_process_pid) | endif
+
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
 set updatetime=300
@@ -322,6 +326,7 @@ ca tl tabn
 " Use <C-a> to apply completion.
 imap <silent><script><expr> <C-a> copilot#Accept("\<CR>")
 let g:copilot_no_tab_map = v:true
+au BufEnter * if !exists('b:copilot_enabled') | let b:copilot_enabled = v:false | endif
 
 " Use <C-p>, <C-n> to cycle through completion options.
 imap <C-p> <Plug>(copilot-previous)
