@@ -1,7 +1,2 @@
-# vim-setup
-My vim-setup (init.vim, plugin, etc.)
-
-nvim - ~/.config/nvim/
-colors - ~/.vim
-
-link ~/.vim/ to nvim
+# workspace-setup
+My workspace-setup (zsh, neovim, git etc.)
