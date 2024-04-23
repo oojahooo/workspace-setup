@@ -194,7 +194,6 @@ endif
 set nobackup
 set nowritebackup
 
-autocmd VimLeavePre * :call coc#rpc#kill()
 autocmd VimLeave * if get(g:, 'coc_process_pid', 0) | call system('kill -9 -'.g:coc_process_pid) | endif
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable

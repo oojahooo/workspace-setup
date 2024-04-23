@@ -1,0 +1,22 @@
+[credential]
+	helper = store
+
+[user]
+	email = oojahooo@gmail.com
+	name = oojahooo
+
+[core]
+    pager = $HOME/delta/delta
+	editor = $HOME/nvim.appimage
+	excludesFile = $HOME/.gitignore
+
+[delta]
+    plus-color = "#012800"
+    minus-color = "#340001"
+    syntax-theme = Monokai Extended
+	line-numbers = true
+
+[interactive]
+    diffFilter = $HOME/delta/delta --color-only
+[init]
+	defaultBranch = main
