@@ -698,14 +698,22 @@ require('lazy').setup({
       }
     end,
   },
+  -- {
+  --   'tiagovla/tokyodark.nvim',
+  --   opts = {
+  --     -- custom options here
+  --   },
+  --   config = function(_, opts)
+  --     require('tokyodark').setup(opts) -- calling setup is optional
+  --     vim.cmd [[colorscheme tokyodark]]
+  --   end,
+  -- },
   {
-    'tiagovla/tokyodark.nvim',
-    opts = {
-      -- custom options here
-    },
-    config = function(_, opts)
-      require('tokyodark').setup(opts) -- calling setup is optional
-      vim.cmd [[colorscheme tokyodark]]
+    'phha/zenburn.nvim',
+    opts = {},
+    config = function(_)
+      require('zenburn').setup()
+      vim.cmd [[colorscheme zenburn]]
     end,
   },
   -- Highlight todo, notes, etc in comments
