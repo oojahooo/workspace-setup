@@ -59,7 +59,7 @@ vim.opt.splitbelow = true
 --  See `:help 'list'`
 --  and `:help 'listchars'`
 vim.opt.list = true
-vim.opt.listchars = { tab = '» ', eol = '$', trail = '·', nbsp = '␣' }
+vim.opt.listchars = { tab = '» ', eol = '$', lead = '·', nbsp = '␣' }
 
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = 'split'
@@ -69,6 +69,12 @@ vim.opt.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
+
+-- Config about space and tab
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
 
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
