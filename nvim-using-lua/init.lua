@@ -322,6 +322,11 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
       vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
       vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
+      vim.keymap.set('n', '<leader>slr', builtin.oldfiles, { desc = '[S]earch [L]SP [R]ferences' })
+      vim.keymap.set('n', '<leader>sli', builtin.oldfiles, { desc = '[S]earch [L]SP [I]ncoming Calls' })
+      vim.keymap.set('n', '<leader>slo', builtin.oldfiles, { desc = '[S]earch [L]SP [O]utgoing Calls' })
+      vim.keymap.set('n', '<leader>sld', builtin.oldfiles, { desc = '[S]earch [L]SP [D]ocument Symbols' })
+      vim.keymap.set('n', '<leader>slw', builtin.oldfiles, { desc = '[S]earch [L]SP [W]orkspace Symbols' })
       vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
 
       -- Slightly advanced example of overriding default behavior and theme
@@ -596,6 +601,7 @@ require('lazy').setup({
         lua = { 'stylua' },
         -- Conform can also run multiple formatters sequentially
         python = { 'black' },
+        json = { 'clang-format' },
         --
         -- You can use 'stop_after_first' to run the first available formatter from the list
         -- javascript = { "prettierd", "prettier", stop_after_first = true },
@@ -714,6 +720,7 @@ require('lazy').setup({
           { name = 'nvim_lsp' },
           { name = 'luasnip' },
           { name = 'path' },
+          { name = 'nvim_lsp_signature_help' },
         },
       }
     end,
