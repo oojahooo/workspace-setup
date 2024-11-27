@@ -299,12 +299,49 @@ require('lazy').setup({
         --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
         --   },
         -- },
-        -- pickers = {}
-        extensions = {
-          ['ui-select'] = {
-            require('telescope.themes').get_dropdown(),
+        pickers = {
+          help_tags = {
+            theme = 'ivy',
+          },
+          keymaps = {
+            theme = 'cursor',
+          },
+          find_files = {
+            theme = 'dropdown',
+          },
+          builtin = {
+            theme = 'cursor',
+          },
+          oldfiles = {
+            theme = 'dropdown',
+          },
+          lsp_definitions = {
+            theme = 'cursor',
+          },
+          lsp_references = {
+            theme = 'cursor',
+          },
+          lsp_incoming_calls = {
+            theme = 'cursor',
+          },
+          lsp_document_symbols = {
+            theme = 'dropdown',
+          },
+          lsp_workspace_symbols = {
+            theme = 'dropdown',
+          },
+          treesitter = {
+            theme = 'dropdown',
+          },
+          diagnostics = {
+            theme = 'ivy',
           },
         },
+        -- extensions = {
+        --   ['ui-select'] = {
+        --     require('telescope.themes').get_dropdown(),
+        --   },
+        -- },
       }
 
       -- Enable Telescope extensions if they are installed
@@ -313,21 +350,26 @@ require('lazy').setup({
 
       -- See `:help telescope.builtin`
       local builtin = require 'telescope.builtin'
+      -- file pickers, vim pickers
       vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
       vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
       vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
       vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
-      vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
       vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
-      vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
-      vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
       vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
-      vim.keymap.set('n', '<leader>slr', builtin.oldfiles, { desc = '[S]earch [L]SP [R]ferences' })
-      vim.keymap.set('n', '<leader>sli', builtin.oldfiles, { desc = '[S]earch [L]SP [I]ncoming Calls' })
-      vim.keymap.set('n', '<leader>slo', builtin.oldfiles, { desc = '[S]earch [L]SP [O]utgoing Calls' })
-      vim.keymap.set('n', '<leader>sld', builtin.oldfiles, { desc = '[S]earch [L]SP [D]ocument Symbols' })
-      vim.keymap.set('n', '<leader>slw', builtin.oldfiles, { desc = '[S]earch [L]SP [W]orkspace Symbols' })
       vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
+      -- lsp pickers
+      vim.keymap.set('n', '<leader>slr', builtin.lsp_references, { desc = '[S]earch [L]SP [R]ferences' })
+      vim.keymap.set('n', '<leader>sli', builtin.lsp_incoming_calls, { desc = '[S]earch [L]SP [I]ncoming Calls' })
+      vim.keymap.set('n', '<leader>slo', builtin.lsp_outgoing_calls, { desc = '[S]earch [L]SP [O]utgoing Calls' })
+      vim.keymap.set('n', '<leader>sld', builtin.lsp_document_symbols, { desc = '[S]earch [L]SP [D]ocument Symbols' })
+      vim.keymap.set('n', '<leader>slw', builtin.lsp_workspace_symbols, { desc = '[S]earch [L]SP [W]orkspace Symbols' })
+      vim.keymap.set('n', '<leader>st', builtin.treesitter, { desc = '[S]earch ids from [T]reesitter' })
+      vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
+      -- git pickers
+      vim.keymap.set('n', '<leader>gc', builtin.git_commits, { desc = 'Lists [G]it [C]ommits' })
+      vim.keymap.set('n', '<leader>gcb', builtin.git_bcommits, { desc = 'Lists [G]it [C]ommits of [B]uffer' })
+      vim.keymap.set('n', '<leader>gb', builtin.git_bcommits, { desc = 'Lists [G]it [B]ranches' })
 
       -- Slightly advanced example of overriding default behavior and theme
       vim.keymap.set('n', '<leader>/', function()
@@ -768,24 +810,6 @@ require('lazy').setup({
       -- - sd'   - [S]urround [D]elete [']quotes
       -- - sr)'  - [S]urround [R]eplace [)] [']
       require('mini.surround').setup()
-
-      -- Simple and easy statusline.
-      --  You could remove this setup call if you don't like it,
-      --  and try some other statusline plugin
-      local statusline = require 'mini.statusline'
-      -- set use_icons to true if you have a Nerd Font
-      statusline.setup { use_icons = vim.g.have_nerd_font }
-
-      -- You can configure sections in the statusline by overriding their
-      -- default behavior. For example, here we set the section for
-      -- cursor location to LINE:COLUMN
-      ---@diagnostic disable-next-line: duplicate-set-field
-      statusline.section_location = function()
-        return '%2l:%-2v'
-      end
-
-      -- ... and there is more!
-      --  Check out: https://github.com/echasnovski/mini.nvim
     end,
   },
   { -- Highlight, edit, and navigate code
