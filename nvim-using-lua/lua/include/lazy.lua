@@ -9,9 +9,6 @@ end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
-  require 'plugins.zenburn',
-  require 'plugins.telescope',
-  require 'plugins.nvim-lspconfig',
   require 'plugins.cmake-tools',
   require 'plugins.conform',
   require 'plugins.dressing',
@@ -25,10 +22,12 @@ require('lazy').setup({
   require 'plugins.mini',
   require 'plugins.notify',
   require 'plugins.nvim-cmp',
+  require 'plugins.nvim-lspconfig',
   require 'plugins.nvim-treesitter',
   require 'plugins.nvim-window',
   require 'plugins.overseer',
   require 'plugins.spider',
+  require 'plugins.telescope',
   require 'plugins.todo-comments',
   require 'plugins.toggleterm',
   require 'plugins.trouble',
@@ -36,6 +35,7 @@ require('lazy').setup({
   require 'plugins.vim-sleuth',
   require 'plugins.which-key',
   require 'plugins.wrapping',
+  require 'plugins.zenburn',
 
   -- kickstart default plugins
   -- require 'plugins.debug',
