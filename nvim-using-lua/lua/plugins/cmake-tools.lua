@@ -25,5 +25,6 @@ return {
     { '<leader>cb', '<cmd>CMakeBuild<cr>', desc = 'CMake: Build Using Generated Build System' },
     { '<leader>cp', '<cmd>CMakeSelectConfigurePreset<cr>', desc = 'CMake: Select Configure Preset' },
     { '<leader>ct', '<cmd>CMakeSelectBuildTarget<cr>', desc = 'CMake: Select Build Target' },
+    { '<leader>cc', '<cmd>CMakeStop<cr>', desc = 'CMake: Stop' },
   },
 }
