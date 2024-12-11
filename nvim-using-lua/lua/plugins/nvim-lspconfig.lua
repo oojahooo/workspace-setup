@@ -105,6 +105,7 @@ return {
         end
       end,
     })
+    require('lspconfig').mlir_lsp_server.setup {}
 
     -- LSP servers and clients are able to communicate to each other what features they support.
     --  By default, Neovim doesn't support everything that is in the LSP specification.

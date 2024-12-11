@@ -14,7 +14,7 @@ require('lazy').setup({
   require 'plugins.dressing',
   require 'plugins.eyeliner',
   require 'plugins.fugitive',
-  require 'plugins.git-blame',
+  -- require 'plugins.git-blame',
   require 'plugins.gitsigns',
   require 'plugins.lazydev',
   require 'plugins.lualine',
