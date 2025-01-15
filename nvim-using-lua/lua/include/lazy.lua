@@ -11,10 +11,10 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({
   require 'plugins.cmake-tools',
   require 'plugins.conform',
+  require 'plugins.comment',
   require 'plugins.dressing',
   require 'plugins.eyeliner',
   require 'plugins.fugitive',
-  -- require 'plugins.git-blame',
   require 'plugins.gitsigns',
   require 'plugins.lazydev',
   require 'plugins.lualine',

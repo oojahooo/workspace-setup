@@ -1,0 +1,1 @@
+let x = List<i32>::Cons(1, 2.0f)

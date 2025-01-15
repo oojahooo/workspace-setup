@@ -1,0 +1,16 @@
+impl Struct
+public
+  fun<i32> check(a: i32) -> i32 {
+    a
+  }
+
+!fun rtFunc(a: rtType(i32), b: rtType(f32)) -> rtType(i32) {
+  10
+}
+
+// This is outer comment
+fun<A, B> func(a: /* This is block comment */  A, b: B) -> B
+  // This is inner comment
+  b
+
+func<i32, f32>(1, 2.f)
