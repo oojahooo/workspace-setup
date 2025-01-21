@@ -3,5 +3,6 @@ vim.filetype.add {
     ll = 'llvm',
     mlir = 'mlir',
     ndy = 'nadya',
+    opus = 'nadya',
   },
 }
