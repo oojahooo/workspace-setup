@@ -36,6 +36,10 @@ return {
         --  This is where a variable was first declared, or where a function is defined, etc.
         --  To jump back, press <C-t>.
         map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
+        map('<leader>gd', function()
+          vim.cmd 'vsplit'
+          require('telescope.builtin').lsp_definitions()
+        end, 'Split window vertically and [G]oto [D]efinition')
 
         -- Find references for the word under your cursor.
         map('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')

@@ -11,3 +11,10 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     vim.highlight.on_yank()
   end,
 })
+
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'proto',
+  callback = function()
+    vim.diagnostic.enable(false)
+  end,
+})

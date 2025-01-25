@@ -21,3 +21,7 @@ vim.keymap.set('n', 'N', 'Nzz')
 -- move cursor to next/prev same word
 vim.keymap.set('n', '<C-n>', '*')
 vim.keymap.set('n', '<C-p>', '#')
+
+-- keymaps for internal terminal
+vim.keymap.set('n', '<C-w>t', ':vs<CR>:term<CR>', { desc = 'Split window vertically and open terminal' })
+vim.keymap.set('t', '<C-[>', '<C-\\><C-n>', { desc = 'Switch from terminal mode to normal mode' })
