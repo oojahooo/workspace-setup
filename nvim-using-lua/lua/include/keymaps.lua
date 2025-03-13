@@ -14,8 +14,6 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 -- move cursor more fast
 vim.keymap.set('n', '<C-h>', '^', { desc = 'Move cursor to start of line' })
 vim.keymap.set('n', '<C-l>', '$', { desc = 'Move cursor to end of line' })
-vim.keymap.set('n', '<C-j>', 'G', { desc = 'Move cursor to end of file' })
-vim.keymap.set('n', '<C-k>', 'gg', { desc = 'Move cursor to start of file' })
 
 -- locate cursor as center of screen when searching
 vim.keymap.set('n', 'n', 'nzz')

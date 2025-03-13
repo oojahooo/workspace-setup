@@ -48,11 +48,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
       -- You can put your default mappings / updates / etc. in here
       --  All the info you're looking for is in `:help telescope.setup()`
       --
-      defaults = {
-        mappings = {
-          i = { ['<c-j>'] = 'move_selection_next', ['<c-k>'] = 'move_selection_previous' },
-        },
-      },
+      defaults = {},
       pickers = {
         help_tags = {
           theme = 'ivy',

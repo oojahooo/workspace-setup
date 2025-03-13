@@ -32,6 +32,7 @@ require('lazy').setup({
   require 'plugins.toggleterm',
   require 'plugins.trouble',
   require 'plugins.various-textobjs',
+  require 'plugins.vimspector',
   require 'plugins.vim-sleuth',
   require 'plugins.which-key',
   require 'plugins.wrapping',
