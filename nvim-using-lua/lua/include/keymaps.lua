@@ -26,3 +26,26 @@ vim.keymap.set('n', '<C-p>', '#')
 -- keymaps for internal terminal
 vim.keymap.set('n', '<C-w>t', ':vs<CR>:term<CR>', { desc = 'Split window vertically and open terminal' })
 vim.keymap.set('t', '<C-[>', '<C-\\><C-n>', { desc = 'Switch from terminal mode to normal mode' })
+
+-- keymaps for vimspector
+vim.keymap.set('n', '<leader>di', '<Plug>VimspectorBalloonEval', { desc = 'Inspect word in debug mode' })
+vim.keymap.set('x', '<leader>di', '<Plug>VimspectorBalloonEval', { desc = 'Inspect text in debug mode' })
+
+vim.keymap.set('n', '<leader>bt', ':VimspectorEval bt<CR>', { desc = 'Vimspector: show backtrace' })
+vim.keymap.set('n', '<leader>fi', ':VimspectorEval frame info<CR>', { desc = 'Vimspector: show frame info' })
+
+vim.keymap.set('n', '<leader>gf', ':lua GetNumberForVimspector()<CR>', { desc = 'Vimspector: go to specific frame' })
+
+function GetNumberForVimspector()
+  local num = vim.fn.nr2char(vim.fn.getchar())
+
+  if not num:match '%d' then
+    print 'The argument is not a number.'
+    return
+  end
+
+  vim.cmd('VimspectorEval f ' .. num)
+end
+
+vim.keymap.set('n', '<leader>fu', ':VimspectorEval up<cr>', { desc = 'Vimspector: go up from current frame' })
+vim.keymap.set('n', '<leader>fd', ':VimspectorEval up<cr>', { desc = 'Vimspector: go down from current frame' })

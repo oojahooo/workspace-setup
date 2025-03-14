@@ -81,3 +81,6 @@ vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 
 vim.opt.colorcolumn = { 80, 120 }
+
+-- Vimspector config
+vim.g.vimspector_enable_mappings = 'HUMAN'
