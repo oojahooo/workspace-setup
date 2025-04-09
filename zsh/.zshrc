@@ -72,11 +72,6 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
-# pyenv config
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init --path)"
-
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
@@ -84,7 +79,6 @@ eval "$(pyenv init --path)"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
     git
-    pyenv
     zsh-autosuggestions
     zsh-syntax-highlighting
 )
@@ -98,9 +92,6 @@ export PATH=$PATH:$HOME/.local/bin
 
 # VS Code
 [[ "$TERM_PROGRAM" == "vscode" ]] && . "$(code --locate-shell-integration-path zsh)"
-
-# OPAM config
-eval $(opam env)
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -131,6 +122,9 @@ export PATH=$HOME/gumtree-3.0.0/bin:$PATH
 export LC_CTYPE=en_US.UTF-8
 export LANG=en_US.UTF-8
 
+bindkey -s "∫" "^[b"
+bindkey -s "ƒ" "^[f"
+
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
@@ -149,11 +143,13 @@ export LANG=en_US.UTF-8
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias vi="~/nvim.appimage"
-alias delta=$HOME/delta/delta
+alias vi="~/nvim-linux-x86_64/bin/nvim"
 alias smake=$HOME/smake/smake
 alias scmake=$HOME/smake/scmake
 alias diff="git diff --no-index"
+
+# zoxide
+eval "$(zoxide init zsh)"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
