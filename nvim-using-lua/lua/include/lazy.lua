@@ -10,9 +10,10 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
   require 'plugins.cmake-tools',
-  require 'plugins.conform',
   require 'plugins.comment',
+  require 'plugins.conform',
   require 'plugins.diffview',
+  require 'plugins.distant',
   require 'plugins.dressing',
   require 'plugins.eyeliner',
   require 'plugins.fugitive',
@@ -32,8 +33,9 @@ require('lazy').setup({
   require 'plugins.toggleterm',
   require 'plugins.trouble',
   require 'plugins.various-textobjs',
-  require 'plugins.vimspector',
   require 'plugins.vim-sleuth',
+  require 'plugins.vim-spirv',
+  require 'plugins.vimspector',
   require 'plugins.which-key',
   require 'plugins.wrapping',
   require 'plugins.zenburn',

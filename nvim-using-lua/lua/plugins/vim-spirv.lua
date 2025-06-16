@@ -1,0 +1,3 @@
+return {
+  'kbenzie/vim-spirv',
+}
