@@ -1,3 +1,0 @@
-return {
-  'puremourning/vimspector',
-}
